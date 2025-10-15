@@ -1,0 +1,7 @@
+<h2>Список продуктів</h2>
+
+<ul>
+  {% for product in products %}
+    <li>{{ product.name }} — {{ product.price }} грн</li>
+  {% endfor %}
+</ul>
