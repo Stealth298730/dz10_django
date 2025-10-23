@@ -1,3 +1,7 @@
+{% extends "base.html" %}
+
+{% block content %}
+
 <h2>Список продуктів</h2>
 
 <ul>
@@ -5,3 +9,26 @@
     <li>{{ product.name }} — {{ product.price }} грн</li>
   {% endfor %}
 </ul>
+
+<div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1" class="btn btn-primary">&laquo; Перша</a>
+            <a href="?page={{ page_obj.previous_page_number }}" class="btn btn-primary" >Попередня</a>
+        {% endif %}
+
+        <span class="current">
+            Сторінка {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}" class="btn btn-primary">Наступна</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}" class="btn btn-primary">Остання &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+
+
+
+
+{% endblock content%}
