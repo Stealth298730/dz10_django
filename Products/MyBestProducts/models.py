@@ -11,3 +11,15 @@ class Product(models.Model):
     def __str__(self):
         return f"{self.name}:{self.price}"
 
+
+class MainList(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"Main: {self.product.name}"
+
+class TopList(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"Top: {self.product.name}"

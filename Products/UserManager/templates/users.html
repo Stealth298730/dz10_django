@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+<table>
+    <thead>
+        <tr>
+            <th>№</th>
+            <th>Користувач</th>
+            <th>Дозволи</th>
+            <th>Дія</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for user in users%}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{user}}</td>
+            <td>
+                {% for permission in user.user_permissions %}
+                    {{permission}}|
+                {% endfor %}
+            </td>
+            <td>
+                <a href = "{{url 'edit_user' user_id=user.id}}" class = "btn btn-warning">Редагувати</a>
+                <a href = "{{url 'delete_user' user_id=user.id}}" class = "btn btn-danger">Видалити</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock content %}

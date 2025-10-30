@@ -21,8 +21,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-owuwagu7n50l!_)*s_78n&s10#^38uvob#hb-8^dn9^(s006&3'
-
+AUTH_USER_MODEL="UserManager.MySuperUser"
+LOGIN_URL = "/sign_in/"
+MEDIA_ROOT= BASE_DIR/"images/"
+MEDIA_URL="/images/"
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 # SECURITY WARNING: don't run with debug turned on in production!
+SECRET_KEY = 'django-insecure-gclresp%t+__(h+t$)nq%@(!8)(%*9_45ezhiauxq6#$tepbbn'
 DEBUG = True
 
 ALLOWED_HOSTS = []
@@ -31,6 +36,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'UserManager',
     'MyBestProducts',
     'django.contrib.admin',
     'django.contrib.auth',

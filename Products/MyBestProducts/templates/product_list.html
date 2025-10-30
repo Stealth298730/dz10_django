@@ -6,7 +6,15 @@
 
 <ul>
   {% for product in products %}
-    <li>{{ product.name }} — {{ product.price }} грн</li>
+    <li>
+        {{ product.name }} — {{ product.price }} грн
+        {% if perms.MyBestProducts.delete_product %}
+        <form action="{% url 'product_delete' product.pk %}" method="post" style="display:inline;">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger btn-sm">Видалити</button>
+        </form>
+        {% endif %}
+    </li>
   {% endfor %}
 </ul>
 
@@ -14,7 +22,7 @@
     <span class="step-links">
         {% if page_obj.has_previous %}
             <a href="?page=1" class="btn btn-primary">&laquo; Перша</a>
-            <a href="?page={{ page_obj.previous_page_number }}" class="btn btn-primary" >Попередня</a>
+            <a href="?page={{ page_obj.previous_page_number }}" class="btn btn-primary">Попередня</a>
         {% endif %}
 
         <span class="current">
@@ -28,7 +36,4 @@
     </span>
 </div>
 
-
-
-
-{% endblock content%}
+{% endblock content %}

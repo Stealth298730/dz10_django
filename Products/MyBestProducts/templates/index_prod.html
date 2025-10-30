@@ -1,0 +1,31 @@
+{% if perms.shop.add_product %}
+<a href="{% url 'product_create' %}">Додати товар</a>
+{% endif %}
+
+<h2>Головні товари</h2>
+<table>
+<tr><th>№</th><th>Назва</th><th>Ціна</th></tr>
+{% for product in main_products %}
+<tr>
+    <td>{{ forloop.counter }}</td>
+    <td>{{ product.name }}</td>
+    <td>{{ product.price }}</td>
+</tr>
+{% empty %}
+<tr><td colspan="3">Немає головних товарів</td></tr>
+{% endfor %}
+</table>
+
+<h2>Топ товари</h2>
+<table>
+<tr><th>№</th><th>Назва</th><th>Ціна</th></tr>
+{% for product in top_products %}
+<tr>
+    <td>{{ forloop.counter }}</td>
+    <td>{{ product.name }}</td>
+    <td>{{ product.price }}</td>
+</tr>
+{% empty %}
+<tr><td colspan="3">Немає топ товарів</td></tr>
+{% endfor %}
+</table>
