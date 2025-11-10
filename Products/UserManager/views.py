@@ -9,6 +9,9 @@ from .forms import SignUp,Login
 # Create your views here.
 
 
+def index(request):
+    return render(request, "index.html")
+
 def sign_up(request:HttpRequest):
     if request.user.is_authenticated:
         return redirect("index")
@@ -52,5 +55,10 @@ def index(request):
 @login_required(login_url="/sign_in/")
 def logout_func(request):
         logout(request)
-        messages.success(request,"Ви успішно ввійшли")
+        messages.success(request,"Ви успішно вийшли")
         return redirect("sign_in")
+
+@login_required
+def cabinet(request):
+    return render(request, "cabinet.html")
+

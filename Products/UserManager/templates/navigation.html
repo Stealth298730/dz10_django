@@ -1,13 +1,15 @@
 <div class="card text-center">
   <div class="card-header">
     <ul class="nav nav-pills card-header-pills">
+       <li class="nav-item">
+        <a class="nav-link active" href="{% url 'index' %}">Головна сторінка</a>
+      </li>
       <li class="nav-item">
-        <a class="nav-link active" href="{% url 'index' %}">Мій кабінет</a>
+        <a class="nav-link active" href="{% url 'cabinet' %}">Мій кабінет</a>
       </li>
       <li class="nav-item">
         <a class="nav-link active" href="{% url 'product_list' %}">Список продуктів</a>
       </li>
-
       {% if request.user.is_authenticated %}
         <li class="nav-item">
           <a class="nav-link active" href="{% url 'product_create' %}">Додати продукт</a>
