@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+</head>
+<body>
+    <h1>{{ title }}</h1>
+
+    <ul>
+        {% for product in page_obj %}
+            <li>
+                {{ product.name }}
+                <a href="{% url 'product_edit' pk=product.pk %}">Редагувати</a>
+                <a href="{% url 'product_delete' pk=product.pk %}">Видалити</a>
+            </li>
+        {% empty %}
+            <li>Продуктів ще немає</li>
+        {% endfor %}
+    </ul>
+
+
+    <div>
+        {% if page_obj.has_previous %}
+            <a href="?page={{ page_obj.previous_page_number }}">Попередня</a>
+        {% endif %}
+
+        <span>Сторінка {{ page_obj.number }} з {{ page_obj.paginator.num_pages }}</span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">Наступна</a>
+        {% endif %}
+    </div>
+
+    <a href="{% url 'product_create' %}">Додати продукт</a>
+</body>
+</html>
