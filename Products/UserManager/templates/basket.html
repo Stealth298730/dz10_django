@@ -1,0 +1,24 @@
+<h2>Ваш кошик</h2>
+
+{% if items %}
+<table border="1">
+    <tr>
+        <th>Товар</th>
+        <th>Кількість</th>
+        <th>Дії</th>
+    </tr>
+    {% for item in items %}
+    <tr>
+        <td>{{ item.product.name }}</td>
+        <td>{{ item.count }}</td>
+        <td>
+            <a href="{% url 'delete_basket' item.product.id %}">Видалити</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<p>Кошик порожній</p>
+{% endif %}
+
+<p><a href="{% url 'product_list' %}">Повернутися до продуктів</a></p>

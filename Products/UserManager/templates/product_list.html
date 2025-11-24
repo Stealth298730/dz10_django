@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="uk">
 <head>
@@ -13,6 +14,9 @@
                 {{ product.name }}
                 <a href="{% url 'product_edit' pk=product.pk %}">Редагувати</a>
                 <a href="{% url 'product_delete' pk=product.pk %}">Видалити</a>
+                <a href="{% url 'add_basket' product.id %}">
+    Додати в кошик
+    </a>
             </li>
         {% empty %}
             <li>Продуктів ще немає</li>
@@ -32,6 +36,7 @@
         {% endif %}
     </div>
 
-    <a href="{% url 'product_create' %}">Додати продукт</a>
+    
 </body>
 </html>
+

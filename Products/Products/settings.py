@@ -41,6 +41,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'basket',
     'UserManager',
     'MyBestProducts',
     'django.contrib.admin',
