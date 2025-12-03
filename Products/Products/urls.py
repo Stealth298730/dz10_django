@@ -24,5 +24,6 @@ urlpatterns = [
     path('', include('MyBestProducts.urls')),  
     path('', include('UserManager.urls')),
     path('basket/', include('basket.urls')),
+    path("captcha/",include("captcha.urls")),
     path('accounts/',include("django.contrib.auth.urls")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
