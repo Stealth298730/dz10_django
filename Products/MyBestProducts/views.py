@@ -3,6 +3,10 @@ from django.core.paginator import Paginator
 from django.contrib.auth.decorators import permission_required
 from .models import Product
 from .forms import ProductForm
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
+from .serializers import ProductSerializer
+from django.http import HttpRequest,JsonResponse
 
 
 
@@ -69,3 +73,9 @@ def product_edit(request, pk):
         form = ProductForm(instance=product)
 
     return render(request, 'product_edit.html', {'form': form, 'product': product})
+
+@api_view(["GET"])
+def test_api(request:HttpRequest):
+    product=Product.objects.first()
+    data = ProductSerializer(product)
+    return Response(data.data)
